@@ -8,8 +8,8 @@
 body {
     font-family: 'Times New Roman', serif;
     line-height: 1.6;
-    color: #333;
-    background: #f8f9fa;
+    color: #2c3e50;
+    background: #ffffff;
     min-height: 100vh;
 }
 
@@ -93,9 +93,10 @@ body {
 .textbook-content {
     flex: 1;
     margin-left: 280px;
-    background: white;
+    background: #ffffff;
     min-height: 100vh;
     padding: 0;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.1);
 }
 
 /* Page Header */
@@ -151,6 +152,7 @@ body {
     line-height: 1.7;
     margin-bottom: 15px;
     text-align: justify;
+    color: #2c3e50;
 }
 
 /* Special Boxes */
@@ -170,6 +172,20 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.recall-box:hover,
+.question-box:hover,
+.interconnected-box:hover,
+.belarus-box:hover,
+.atlas-box:hover,
+.expert-club:hover,
+.dictionary-box:hover,
+.summary-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .recall-box {
@@ -327,6 +343,32 @@ body {
     padding: 20px;
     background: #f8f9fa;
     border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.figure-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* World Map Container */
+.world-map-container {
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 1px solid #dee2e6;
+}
+
+/* SVG Animations */
+svg {
+    transition: transform 0.3s ease;
+}
+
+svg:hover {
+    transform: scale(1.02);
 }
 
 .blue-helmet {

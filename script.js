@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     // Add fade-in animation to content blocks
-    const contentBlocks = document.querySelectorAll('.textbook-section, .recall-box, .question-box, .expert-club, .diagram-container');
+    const contentBlocks = document.querySelectorAll('.textbook-section, .recall-box, .question-box, .expert-club, .diagram-container, .figure-container');
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -98,6 +98,61 @@ document.addEventListener('DOMContentLoaded', function() {
         block.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         fadeObserver.observe(block);
     });
+    
+    // Add interactive hover effects to special boxes
+    const specialBoxes = document.querySelectorAll('.recall-box, .question-box, .interconnected-box, .belarus-box, .atlas-box, .expert-club, .dictionary-box, .summary-box');
+    specialBoxes.forEach(box => {
+        box.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-3px) scale(1.02)';
+        });
+        
+        box.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+    
+    // Add click effects to navigation items
+    const navItems = document.querySelectorAll('.nav-link');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            // Add ripple effect
+            const ripple = document.createElement('span');
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255,255,255,0.3);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            `;
+            
+            const rect = this.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = (rect.width / 2 - size / 2) + 'px';
+            ripple.style.top = (rect.height / 2 - size / 2) + 'px';
+            
+            this.style.position = 'relative';
+            this.style.overflow = 'hidden';
+            this.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        });
+    });
+    
+    // Add CSS for ripple animation
+    const rippleStyle = document.createElement('style');
+    rippleStyle.textContent = `
+        @keyframes ripple {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(rippleStyle);
     
     // Add keyboard navigation
     document.addEventListener('keydown', function(e) {
@@ -141,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
     styleSheet.textContent = printStyles;
     document.head.appendChild(styleSheet);
     
-    // Add search functionality (basic)
+    // Add search functionality (enhanced)
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.placeholder = 'Поиск по учебнику...';
@@ -154,24 +209,81 @@ document.addEventListener('DOMContentLoaded', function() {
         background: #34495e;
         color: white;
         font-size: 0.9rem;
+        transition: all 0.3s ease;
     `;
     
     const sidebarContent = document.querySelector('.sidebar-content');
     if (sidebarContent) {
         sidebarContent.insertBefore(searchInput, sidebarContent.firstChild);
         
+        // Enhanced search with highlighting
         searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase();
+            const searchTerm = this.value.toLowerCase().trim();
             const sections = document.querySelectorAll('.textbook-section');
+            const navLinks = document.querySelectorAll('.nav-link');
             
-            sections.forEach(section => {
-                const text = section.textContent.toLowerCase();
-                if (text.includes(searchTerm) || searchTerm === '') {
+            if (searchTerm === '') {
+                // Show all sections
+                sections.forEach(section => {
                     section.style.display = 'block';
+                    // Remove highlighting
+                    const highlightedText = section.querySelectorAll('.search-highlight');
+                    highlightedText.forEach(el => {
+                        el.outerHTML = el.innerHTML;
+                    });
+                });
+                
+                // Show all nav links
+                navLinks.forEach(link => {
+                    link.style.display = 'block';
+                });
+            } else {
+                let foundSections = 0;
+                
+                sections.forEach(section => {
+                    const text = section.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        section.style.display = 'block';
+                        foundSections++;
+                        
+                        // Add highlighting
+                        const content = section.innerHTML;
+                        const regex = new RegExp(`(${searchTerm})`, 'gi');
+                        const highlightedContent = content.replace(regex, '<span class="search-highlight" style="background: #f39c12; color: #2c3e50; padding: 2px 4px; border-radius: 3px;">$1</span>');
+                        section.innerHTML = highlightedContent;
+                    } else {
+                        section.style.display = 'none';
+                    }
+                });
+                
+                // Update navigation based on visible sections
+                navLinks.forEach(link => {
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetSection = document.querySelector(`#${targetId}`);
+                    if (targetSection && targetSection.style.display !== 'none') {
+                        link.style.display = 'block';
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+                
+                // Show search results count
+                if (foundSections > 0) {
+                    searchInput.style.borderColor = '#27ae60';
+                    searchInput.style.boxShadow = '0 0 5px rgba(39, 174, 96, 0.3)';
                 } else {
-                    section.style.display = 'none';
+                    searchInput.style.borderColor = '#e74c3c';
+                    searchInput.style.boxShadow = '0 0 5px rgba(231, 76, 60, 0.3)';
                 }
-            });
+            }
+        });
+        
+        // Clear search on escape
+        searchInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                this.value = '';
+                this.dispatchEvent(new Event('input'));
+            }
         });
     }
     

@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Динамика политической карты мира - Онлайн учебник</title>
+    <meta name="description" content="Интерактивный онлайн учебник по географии. Тема: Динамика политической карты мира. Объекты политической карты, формы государств, миротворческие операции ООН.">
+    <meta name="keywords" content="география, политическая карта мира, государства, территории, ООН, миротворческие операции, учебник, онлайн">
+    <meta name="author" content="Ушакова Даша">
+    <meta property="og:title" content="Динамика политической карты мира - Онлайн учебник">
+    <meta property="og:description" content="Интерактивный онлайн учебник по географии. Изучайте объекты политической карты мира в удобном формате.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-username.github.io/web-page/">
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🌍%3C/text%3E%3C/svg%3E">
 </head>
 <body>
     <div class="textbook-container">
@@ -218,7 +226,24 @@
 
                 <div class="figure-container">
                     <div class="figure">
-                        <div class="blue-helmet">🪖</div>
+                        <svg width="200" height="200" viewBox="0 0 200 200" style="margin: 20px auto; display: block;">
+                            <defs>
+                                <linearGradient id="helmetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4A90E2;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#1e3c72;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <!-- Helmet base -->
+                            <ellipse cx="100" cy="120" rx="80" ry="60" fill="url(#helmetGradient)" stroke="#2c3e50" stroke-width="2"/>
+                            <!-- Helmet top -->
+                            <ellipse cx="100" cy="80" rx="60" ry="40" fill="url(#helmetGradient)" stroke="#2c3e50" stroke-width="2"/>
+                            <!-- UN letters -->
+                            <text x="100" y="90" text-anchor="middle" fill="white" font-family="Arial, sans-serif" font-size="16" font-weight="bold">UN</text>
+                            <!-- Peace symbol -->
+                            <circle cx="100" cy="140" r="15" fill="none" stroke="white" stroke-width="3"/>
+                            <line x1="100" y1="130" x2="100" y2="150" stroke="white" stroke-width="2"/>
+                            <line x1="90" y1="140" x2="110" y2="140" stroke="white" stroke-width="2"/>
+                        </svg>
                         <div class="figure-caption">Рис. 9. «Голубая каска» — символ миротворческой деятельности ООН</div>
                     </div>
                 </div>
@@ -233,6 +258,65 @@
 
                 <div class="peacekeeping-map">
                     <h4>Рис. 10. География современной миротворческой деятельности ООН</h4>
+                    <div class="world-map-container">
+                        <svg width="600" height="300" viewBox="0 0 600 300" style="margin: 20px auto; display: block; background: #e8f4fd; border-radius: 8px;">
+                            <!-- World map outline -->
+                            <path d="M50,150 Q100,120 150,140 Q200,130 250,145 Q300,140 350,150 Q400,155 450,150 Q500,145 550,150" 
+                                  fill="none" stroke="#2c3e50" stroke-width="2"/>
+                            
+                            <!-- Peacekeeping operation markers -->
+                            <!-- Americas -->
+                            <circle cx="120" cy="200" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="130" y="205" font-size="10" fill="#2c3e50">1. Гаити</text>
+                            
+                            <!-- Africa -->
+                            <circle cx="280" cy="180" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="290" y="185" font-size="10" fill="#2c3e50">2. Западная Сахара</text>
+                            
+                            <circle cx="300" cy="200" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="310" y="205" font-size="10" fill="#2c3e50">3. ЦАР</text>
+                            
+                            <circle cx="280" cy="220" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="290" y="225" font-size="10" fill="#2c3e50">4. Мали</text>
+                            
+                            <circle cx="320" cy="230" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="330" y="235" font-size="10" fill="#2c3e50">5. ДР Конго</text>
+                            
+                            <circle cx="320" cy="200" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="330" y="205" font-size="10" fill="#2c3e50">6. Дарфур</text>
+                            
+                            <circle cx="320" cy="210" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="330" y="215" font-size="10" fill="#2c3e50">11. Абьей</text>
+                            
+                            <circle cx="330" cy="220" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="340" y="225" font-size="10" fill="#2c3e50">13. Южный Судан</text>
+                            
+                            <!-- Europe -->
+                            <circle cx="350" cy="120" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="360" y="125" font-size="10" fill="#2c3e50">7. Кипр</text>
+                            
+                            <circle cx="360" cy="130" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="370" y="135" font-size="10" fill="#2c3e50">12. Косово</text>
+                            
+                            <!-- Middle East -->
+                            <circle cx="380" cy="150" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="390" y="155" font-size="10" fill="#2c3e50">8. Голаны</text>
+                            
+                            <circle cx="370" cy="160" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="380" y="165" font-size="10" fill="#2c3e50">9. Ливан</text>
+                            
+                            <circle cx="390" cy="170" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="400" y="175" font-size="10" fill="#2c3e50">10. Ближний Восток</text>
+                            
+                            <!-- Asia -->
+                            <circle cx="450" cy="180" r="6" fill="#e74c3c" stroke="#2c3e50" stroke-width="1"/>
+                            <text x="460" y="185" font-size="10" fill="#2c3e50">14. Индия-Пакистан</text>
+                            
+                            <!-- Legend -->
+                            <rect x="20" y="20" width="15" height="15" fill="#e74c3c" stroke="#2c3e50"/>
+                            <text x="40" y="32" font-size="12" fill="#2c3e50">Миротворческие операции ООН</text>
+                        </svg>
+                    </div>
                     <div class="map-legend">
                         <div class="legend-column">
                             <div class="legend-item">1. Гаити</div>
@@ -291,6 +375,23 @@
                         <p>Примерами являются Чили, Норвегия, Вьетнам, Италия, Гамбия. Их территории вытянуты вдоль побережий или крупных речных долин на сотни километров.</p>
                         
                         <div class="figure-container">
+                            <svg width="300" height="200" viewBox="0 0 300 200" style="margin: 20px auto; display: block;">
+                                <defs>
+                                    <linearGradient id="italyGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Italy outline -->
+                                <path d="M50,50 Q80,40 120,45 Q160,50 200,55 Q240,60 280,65 Q290,70 280,80 Q270,90 260,100 Q250,110 240,120 Q230,130 220,140 Q210,150 200,160 Q190,170 180,180 Q170,190 160,195 Q150,200 140,195 Q130,190 120,180 Q110,170 100,160 Q90,150 80,140 Q70,130 60,120 Q50,110 45,100 Q40,90 45,80 Q50,70 50,60 Z" 
+                                      fill="url(#italyGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <!-- Boot shape -->
+                                <path d="M60,120 Q70,110 80,115 Q90,120 100,125 Q110,130 120,135 Q130,140 140,145 Q150,150 160,155 Q170,160 180,165 Q190,170 200,175 Q210,180 220,185 Q230,190 240,195 Q250,200 260,195 Q270,190 280,185 Q290,180 280,175 Q270,170 260,165 Q250,160 240,155 Q230,150 220,145 Q210,140 200,135 Q190,130 180,125 Q170,120 160,115 Q150,110 140,115 Q130,120 120,125 Q110,130 100,135 Q90,140 80,135 Q70,130 60,125 Z" 
+                                      fill="url(#italyGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <text x="150" y="30" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">ИТАЛИЯ</text>
+                                <text x="150" y="50" text-anchor="middle" font-size="10" fill="#2c3e50">Вытянутая форма</text>
+                            </svg>
                             <div class="figure-caption">Рис. 11. Вытянутая форма государственной территории Италии</div>
                         </div>
 
@@ -308,6 +409,21 @@
                         <p>Имеют форму, близкую к квадрату или кругу. Примерами являются Франция, Испания, Польша, Венгрия и др. В таких формах все пограничные районы примерно равноудалены от центра страны.</p>
                         
                         <div class="figure-container">
+                            <svg width="300" height="200" viewBox="0 0 300 200" style="margin: 20px auto; display: block;">
+                                <defs>
+                                    <linearGradient id="polandGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Poland outline -->
+                                <rect x="50" y="50" width="200" height="100" rx="20" ry="20" 
+                                      fill="url(#polandGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <!-- Central point -->
+                                <circle cx="150" cy="100" r="3" fill="#2c3e50"/>
+                                <text x="150" y="30" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">ПОЛЬША</text>
+                                <text x="150" y="50" text-anchor="middle" font-size="10" fill="#2c3e50">Компактная форма</text>
+                            </svg>
                             <div class="figure-caption">Рис. 12. Компактная форма государственной территории Польши</div>
                         </div>
 
@@ -336,6 +452,27 @@
                         <p>Состоящие из нескольких частей, разделённых территорией других стран или международными водами (напр., государства-архипелаги — Индонезия и Филиппины, «двойная» Малайзия (рис. 13), расположенная на полуострове Малакка и острове Калимантан).</p>
                         
                         <div class="figure-container">
+                            <svg width="300" height="200" viewBox="0 0 300 200" style="margin: 20px auto; display: block;">
+                                <defs>
+                                    <linearGradient id="malaysiaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Main Malaysia (Malay Peninsula) -->
+                                <rect x="50" y="80" width="120" height="40" rx="5" ry="5" 
+                                      fill="url(#malaysiaGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <!-- East Malaysia (Borneo) -->
+                                <rect x="200" y="100" width="60" height="60" rx="10" ry="10" 
+                                      fill="url(#malaysiaGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <!-- Connection line -->
+                                <line x1="170" y1="100" x2="200" y2="130" stroke="#2c3e50" stroke-width="2" stroke-dasharray="5,5"/>
+                                <text x="150" y="30" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">МАЛАЙЗИЯ</text>
+                                <text x="150" y="50" text-anchor="middle" font-size="10" fill="#2c3e50">Фрагментарная форма</text>
+                                <text x="110" y="100" text-anchor="middle" font-size="8" fill="#2c3e50">Малакка</text>
+                                <text x="230" y="130" text-anchor="middle" font-size="8" fill="#2c3e50">Калимантан</text>
+                            </svg>
                             <div class="figure-caption">Рис. 13. Фрагментарная форма государственной территории Малайзии</div>
                         </div>
                     </div>
@@ -345,6 +482,37 @@
                         <p>Небольшие районы, отрезанные от основной территории государства землями других стран или расположенные внутри территории других государств (напр., анклавное положение занимают Калининградская область России, Нахичевань в Азербайджане, отделённая от него территорией Армении (рис. 14)).</p>
                         
                         <div class="figure-container">
+                            <svg width="300" height="200" viewBox="0 0 300 200" style="margin: 20px auto; display: block;">
+                                <defs>
+                                    <linearGradient id="azerbaijanGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+                                        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+                                    </linearGradient>
+                                    <linearGradient id="armeniaGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color:#e74c3c;stop-opacity:1" />
+                                        <stop offset="33%" style="stop-color:#ffffff;stop-opacity:1" />
+                                        <stop offset="66%" style="stop-color:#ffffff;stop-opacity:1" />
+                                        <stop offset="100%" style="stop-color:#27ae60;stop-opacity:1" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Main Azerbaijan -->
+                                <rect x="50" y="80" width="100" height="60" rx="5" ry="5" 
+                                      fill="url(#azerbaijanGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <!-- Armenia (separating the territories) -->
+                                <rect x="120" y="100" width="80" height="40" rx="5" ry="5" 
+                                      fill="url(#armeniaGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <!-- Nakhchivan exclave -->
+                                <rect x="200" y="90" width="60" height="50" rx="5" ry="5" 
+                                      fill="url(#azerbaijanGradient)" stroke="#2c3e50" stroke-width="2"/>
+                                <!-- Connection line -->
+                                <line x1="150" y1="110" x2="200" y2="115" stroke="#2c3e50" stroke-width="2" stroke-dasharray="3,3"/>
+                                <text x="150" y="30" text-anchor="middle" font-size="14" fill="#2c3e50" font-weight="bold">АЗЕРБАЙДЖАН</text>
+                                <text x="150" y="50" text-anchor="middle" font-size="10" fill="#2c3e50">Эксклав Нахичевань</text>
+                                <text x="100" y="120" text-anchor="middle" font-size="8" fill="#2c3e50">Азербайджан</text>
+                                <text x="160" y="120" text-anchor="middle" font-size="8" fill="#2c3e50">Армения</text>
+                                <text x="230" y="120" text-anchor="middle" font-size="8" fill="#2c3e50">Нахичевань</text>
+                            </svg>
                             <div class="figure-caption">Рис. 14. Эксклав Азербайджана — Нахичеванская Автономная Республика, отделённая территорией Армении</div>
                         </div>
                     </div>
