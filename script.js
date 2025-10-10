@@ -1,81 +1,17 @@
 // Textbook functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Sidebar toggle functionality
-    const sidebarToggle = document.getElementById('sidebarToggle');
-    const sidebar = document.querySelector('.sidebar');
-    
-    if (sidebarToggle) {
-        sidebarToggle.addEventListener('click', function() {
-            sidebar.classList.toggle('open');
-        });
-    }
-    
-    // Close sidebar when clicking outside on mobile
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 1024) {
-            if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
-                sidebar.classList.remove('open');
-            }
-        }
-    });
-    
-    // Navigation links functionality
-    const navLinks = document.querySelectorAll('.nav-link');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+    // Smooth scroll for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            
-            // Remove active class from all links
-            navLinks.forEach(l => l.classList.remove('active'));
-            // Add active class to clicked link
-            this.classList.add('active');
-            
-            // Get target section
-            const targetId = this.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
-            
-            if (targetSection) {
-                // Smooth scroll to target
-                targetSection.scrollIntoView({
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
                     behavior: 'smooth',
                     block: 'start'
                 });
-                
-                // Close sidebar on mobile after navigation
-                if (window.innerWidth <= 1024) {
-                    sidebar.classList.remove('open');
-                }
             }
         });
-    });
-    
-    // Update active navigation link based on scroll position
-    const sections = document.querySelectorAll('.textbook-section');
-    const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -70% 0px',
-        threshold: 0
-    };
-    
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const activeId = entry.target.getAttribute('id');
-                if (activeId) {
-                    // Update active navigation link
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === `#${activeId}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            }
-        });
-    }, observerOptions);
-    
-    sections.forEach(section => {
-        sectionObserver.observe(section);
     });
     
     // Add fade-in animation to content blocks
@@ -196,96 +132,6 @@ document.addEventListener('DOMContentLoaded', function() {
     styleSheet.textContent = printStyles;
     document.head.appendChild(styleSheet);
     
-    // Add search functionality (enhanced)
-    const searchInput = document.createElement('input');
-    searchInput.type = 'text';
-    searchInput.placeholder = 'Поиск по учебнику...';
-    searchInput.style.cssText = `
-        width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border: 1px solid #34495e;
-        border-radius: 4px;
-        background: #34495e;
-        color: white;
-        font-size: 0.9rem;
-        transition: all 0.3s ease;
-    `;
-    
-    const sidebarContent = document.querySelector('.sidebar-content');
-    if (sidebarContent) {
-        sidebarContent.insertBefore(searchInput, sidebarContent.firstChild);
-        
-        // Enhanced search with highlighting
-        searchInput.addEventListener('input', function() {
-            const searchTerm = this.value.toLowerCase().trim();
-            const sections = document.querySelectorAll('.textbook-section');
-            const navLinks = document.querySelectorAll('.nav-link');
-            
-            if (searchTerm === '') {
-                // Show all sections
-                sections.forEach(section => {
-                    section.style.display = 'block';
-                    // Remove highlighting
-                    const highlightedText = section.querySelectorAll('.search-highlight');
-                    highlightedText.forEach(el => {
-                        el.outerHTML = el.innerHTML;
-                    });
-                });
-                
-                // Show all nav links
-                navLinks.forEach(link => {
-                    link.style.display = 'block';
-                });
-            } else {
-                let foundSections = 0;
-                
-                sections.forEach(section => {
-                    const text = section.textContent.toLowerCase();
-                    if (text.includes(searchTerm)) {
-                        section.style.display = 'block';
-                        foundSections++;
-                        
-                        // Add highlighting
-                        const content = section.innerHTML;
-                        const regex = new RegExp(`(${searchTerm})`, 'gi');
-                        const highlightedContent = content.replace(regex, '<span class="search-highlight" style="background: #f39c12; color: #2c3e50; padding: 2px 4px; border-radius: 3px;">$1</span>');
-                        section.innerHTML = highlightedContent;
-                    } else {
-                        section.style.display = 'none';
-                    }
-                });
-                
-                // Update navigation based on visible sections
-                navLinks.forEach(link => {
-                    const targetId = link.getAttribute('href').substring(1);
-                    const targetSection = document.querySelector(`#${targetId}`);
-                    if (targetSection && targetSection.style.display !== 'none') {
-                        link.style.display = 'block';
-                    } else {
-                        link.style.display = 'none';
-                    }
-                });
-                
-                // Show search results count
-                if (foundSections > 0) {
-                    searchInput.style.borderColor = '#27ae60';
-                    searchInput.style.boxShadow = '0 0 5px rgba(39, 174, 96, 0.3)';
-                } else {
-                    searchInput.style.borderColor = '#e74c3c';
-                    searchInput.style.boxShadow = '0 0 5px rgba(231, 76, 60, 0.3)';
-                }
-            }
-        });
-        
-        // Clear search on escape
-        searchInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                this.value = '';
-                this.dispatchEvent(new Event('input'));
-            }
-        });
-    }
     
     // Add progress indicator
     const progressBar = document.createElement('div');
