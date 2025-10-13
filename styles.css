@@ -437,6 +437,35 @@ svg:hover {
     font-size: 1.3rem;
 }
 
+/* Page Footer */
+.page-footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 30px 0;
+    margin-top: 50px;
+    border-top: 3px solid #3498db;
+}
+
+.footer-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0 40px;
+}
+
+.author-signature {
+    font-size: 1.1rem;
+    margin: 0;
+    color: #ecf0f1;
+    font-style: italic;
+}
+
+.author-signature strong {
+    color: #3498db;
+    font-weight: bold;
+    font-style: normal;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .textbook-section {
@@ -514,6 +543,14 @@ svg:hover {
     .branch-title {
         font-size: 1.1rem;
         padding: 10px 15px;
+    }
+    
+    .footer-content {
+        padding: 0 20px;
+    }
+    
+    .author-signature {
+        font-size: 1rem;
     }
 }
 
