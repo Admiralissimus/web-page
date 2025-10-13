@@ -371,6 +371,35 @@ svg:hover {
     color: #2c3e50;
 }
 
+.peacekeeping-list {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.list-column {
+    flex: 1;
+    min-width: 200px;
+}
+
+.list-item {
+    padding: 8px 0;
+    border-bottom: 1px solid #dee2e6;
+    font-size: 0.95rem;
+    color: #2c3e50;
+    transition: color 0.2s ease;
+}
+
+.list-item:hover {
+    color: #3498db;
+}
+
 .map-legend {
     display: flex;
     gap: 30px;
@@ -451,6 +480,11 @@ svg:hover {
     
     .map-legend {
         flex-direction: column;
+    }
+    
+    .peacekeeping-list {
+        flex-direction: column;
+        gap: 20px;
     }
     
     .recall-box,
